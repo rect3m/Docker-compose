@@ -1,15 +1,22 @@
 {
-  "name": "pr1",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "@types/node": "22.7.5"
-  }
+    "name": "pr1",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@types/node": "22.7.5"
+    },
+    "dependencies": {
+        "@mgcrea/fastify-request-logger": "1.8.0",
+        "@mgcrea/pino-pretty-compact": "1.3.0",
+        "dotenv": "16.4.5",
+        "fastify": "4.28.1",
+        "pino-pretty": "11.3.0"
+    }
 }
