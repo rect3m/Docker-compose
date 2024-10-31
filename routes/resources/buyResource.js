@@ -1,36 +1,39 @@
 const { resourceRepository } = require("./../../repositories/resource.repo");
+const { receiptRepository } = require("./../../repositories/receipt.repo");
 
 module.exports = {
   /**
    * @type {import('fastify').RouteOptions}
    */
-  createResource: {
-    url: "/resources",
+  buyResources: {
+    url: "/resources/buy",
     method: "POST",
     bodyLimit: 1024,
     schema: {
       body: {
         type: "object",
-        required: ["name", "type"],
+        required: ["items"],
         properties: {
-          name: { type: "string" },
-          type: { type: "string" },
-          price: { type: "number" },
-          amount: { type: "number" },
+          items: {
+            type: "array",
+            items: {
+              type: "object",
+              required: ["resourceId", "count"],
+              properties: {
+                resourceId: { type: "string" },
+                count: { type: "number" },
+              },
+            },
+          },
         },
       },
     },
     handler: async (request, reply) => {
       try {
         // @ts-ignore - We know that the body is defined in the schema
-        const { name, type, amount = 0, price = 0 } = request.body;
+        const { items } = request.body;
 
-        const resource = await resourceRepository.create({
-          name,
-          type,
-          amount,
-          price,
-        });
+        const resource = await receiptRepository.create({ items });
 
         return reply.code(201).send(resource);
       } catch (error) {
