@@ -20,12 +20,3 @@
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
-LICENSE
-README.md
-# Ignore all files that contain cache/lock data to prevent cache/lock files from being copied to the image
-yarn.lock
-pnpm-lock.yaml
-package-lock.json
-# Ignore dev tools
-.vscode
-.huksy
